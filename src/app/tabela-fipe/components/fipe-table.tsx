@@ -85,7 +85,10 @@ export const FipeTable = () => {
   }
 
   return (
-    <Container maxWidth="md" sx={{ textAlign: "center", mt: 4 }}>
+    <Container
+      maxWidth="md"
+      sx={{ textAlign: "center", mt: 4, boxShadow: 3, padding: 10 }}
+    >
       <Typography
         variant="h1"
         sx={{ fontSize: "2.5rem", fontWeight: "bold", mb: 2 }}
@@ -102,7 +105,6 @@ export const FipeTable = () => {
           backgroundColor: "white",
           padding: "50px",
           borderRadius: "8px",
-          boxShadow: 1,
         }}
       >
         <BrandSelect

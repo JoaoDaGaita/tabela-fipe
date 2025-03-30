@@ -10,7 +10,7 @@ Este repositório contém minha solução para o teste técnico de frontend, que
 
     Componentes UI: Material-UI
 
-    Estilização: Emotion (CSS-in-JS)
+    Estilização: Material-UI e Emotion (CSS-in-JS)
 
     Fonte: Roboto
 

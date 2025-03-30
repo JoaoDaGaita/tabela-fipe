@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚗 Tabela Fipe - Teste Frontend
+📝 Descrição
 
-## Getting Started
+Este repositório contém minha solução para o teste técnico de frontend, que inclui exercícios de programação e um projeto de consulta de preços de veículos utilizando a tabela FIPE brasileira.
+🛠️ Tecnologias Utilizadas
 
-First, run the development server:
+    Framework: React.js
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    Gerenciamento de Estado: Redux Toolkit
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Componentes UI: Material-UI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    Estilização: Material-UI e Emotion (CSS-in-JS)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    Fonte: Roboto
 
-## Learn More
+    Deploy: Vercel
 
-To learn more about Next.js, take a look at the following resources:
+🚀 Demonstração Online
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel
+📋 Solução dos Exercícios
+Os Exercicios 1, 2 e 4 estão fixos no console, já o exercício 3 está na home page. E por fim o exercício da tabela fipe esta no endereço
+[TABELA FIPE](https://tabela-fipe-delta.vercel.app/tabela-fipe)

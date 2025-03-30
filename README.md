@@ -1,25 +1,24 @@
-# 🚗 Tabela Fipe - Frontend Test
+🚗 Tabela Fipe - Teste Frontend
+📝 Descrição
 
-## 📝 Description
-This repository contains my solution for the frontend technical test, which includes programming exercises and a vehicle price consultation project using the Brazilian FIPE table.
+Este repositório contém minha solução para o teste técnico de frontend, que inclui exercícios de programação e um projeto de consulta de preços de veículos utilizando a tabela FIPE brasileira.
+🛠️ Tecnologias Utilizadas
 
-## 🛠️ Tech Stack
-- **Framework**: React.js
-- **State Management**: Redux Toolkit
-- **UI Components**: Material-UI
-- **Styling**: Emotion (CSS-in-JS)
-- **Font**: Roboto
-- **Deployment**: Vercel
+    Framework: React.js
 
-## 🚀 Live Demo
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-%23000000?style=flat&logo=vercel)](https://tabela-fipe.vercel.app)
+    Gerenciamento de Estado: Redux Toolkit
 
-## 📋 Exercises Solution
+    Componentes UI: Material-UI
 
-### 1️⃣ Maskify Credit Card Numbers
-```javascript
-function maskify(string) {
-  return string.length > 4 
-    ? '#'.repeat(string.length - 4) + string.slice(-4)
-    : string;
-}
+    Estilização: Emotion (CSS-in-JS)
+
+    Fonte: Roboto
+
+    Deploy: Vercel
+
+🚀 Demonstração Online
+
+Vercel
+📋 Solução dos Exercícios
+Os Exercicios 1, 2 e 4 estão fixos no console, já o exercício 3 está na home page. E por fim o exercício da tabela fipe esta no endereço
+[TABELA FIPE](https://tabela-fipe-delta.vercel.app/tabela-fipe)

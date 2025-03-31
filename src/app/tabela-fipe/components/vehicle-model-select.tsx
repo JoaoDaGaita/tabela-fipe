@@ -1,5 +1,6 @@
 "use client"
-import { useAppSelector } from "@/features/tabela-fipe/hooks/hooks"
+import { useAppSelector } from "@/store/hooks"
+import type { Model } from "@/types/fipe.types"
 import { TextField, CircularProgress, InputAdornment } from "@mui/material"
 
 interface ModelSelectProps {
@@ -47,7 +48,7 @@ export const ModelSelect = ({
       }}
     >
       <option value="">{loading ? "" : disabled ? "" : ""}</option>
-      {modelList?.modelos.map((model) => (
+      {modelList.modelos.map((model: Model) => (
         <option key={model.codigo} value={model.codigo}>
           {model.nome}
         </option>

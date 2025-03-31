@@ -1,11 +1,12 @@
 "use client"
-import { useAppSelector } from "@/features/tabela-fipe/hooks/hooks"
+
+import { useAppSelector } from "@/store/hooks"
+import type { ModelYearVariant } from "@/types/fipe.types"
 import { TextField, CircularProgress, InputAdornment } from "@mui/material"
 
 interface YearSelectProps {
   value: string
   onChange: (value: string) => void
-  loading: boolean
   initialLoad: boolean
   disabled: boolean
 }
@@ -13,11 +14,10 @@ interface YearSelectProps {
 export const YearSelect = ({
   value,
   onChange,
-  loading,
   initialLoad,
   disabled,
 }: YearSelectProps) => {
-  const { yearList } = useAppSelector((state) => state.years)
+  const { yearList, yearLoading } = useAppSelector((state) => state.years)
 
   return (
     <TextField
@@ -28,7 +28,7 @@ export const YearSelect = ({
       sx={{ mb: 6 }}
       onChange={(e) => onChange(e.target.value)}
       fullWidth
-      disabled={disabled || loading}
+      disabled={disabled || yearLoading}
       slotProps={{
         select: {
           native: true,
@@ -38,7 +38,7 @@ export const YearSelect = ({
           shrink: initialLoad ? false : undefined,
         },
         input: {
-          startAdornment: loading && (
+          startAdornment: yearLoading && (
             <InputAdornment position="start">
               <CircularProgress size={20} sx={{ mr: 1 }} />
             </InputAdornment>
@@ -46,13 +46,20 @@ export const YearSelect = ({
         },
       }}
     >
-      <option value="">{loading ? "" : disabled ? "" : ""}</option>
-      {/* arrumar caso não haja um ano valido */}
-      {yearList?.map((year) => (
-        <option key={year.codigo} value={year.codigo}>
-          {year.nome}
-        </option>
-      ))}
+      <option value="">{yearLoading ? "" : disabled ? "" : ""}</option>
+
+      {yearList.length > 0
+        ? yearList.map((year: ModelYearVariant) => (
+            <option key={year.codigo} value={year.codigo}>
+              {year.nome}
+            </option>
+          ))
+        : !yearLoading &&
+          !disabled && (
+            <option value="" disabled>
+              Nenhum ano encontrado para este modelo
+            </option>
+          )}
     </TextField>
   )
 }

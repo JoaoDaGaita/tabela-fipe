@@ -1,21 +1,21 @@
 "use client"
-import { useAppSelector } from "@/features/tabela-fipe/hooks/hooks"
+
+import { useAppSelector } from "@/store/hooks"
+import type { VehicleBrand } from "@/types/fipe.types"
 import { TextField, CircularProgress, InputAdornment } from "@mui/material"
 
 interface BrandSelectProps {
   value: string
   onChange: (value: string) => void
-  loading: boolean
   initialLoad: boolean
 }
 
 export const BrandSelect = ({
   value,
   onChange,
-  loading,
   initialLoad,
 }: BrandSelectProps) => {
-  const { brandList } = useAppSelector((state) => state.brands)
+  const { brandList, brandLoading } = useAppSelector((state) => state.brands)
 
   return (
     <TextField
@@ -26,7 +26,7 @@ export const BrandSelect = ({
       sx={{ mb: 3 }}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      disabled={loading}
+      disabled={brandLoading}
       slotProps={{
         select: {
           native: true,
@@ -36,7 +36,7 @@ export const BrandSelect = ({
           shrink: initialLoad ? false : undefined,
         },
         input: {
-          startAdornment: loading && (
+          startAdornment: brandLoading && (
             <InputAdornment position="start">
               <CircularProgress size={20} sx={{ mr: 1 }} />
             </InputAdornment>
@@ -45,9 +45,9 @@ export const BrandSelect = ({
       }}
     >
       <option value="" disabled hidden>
-        {loading ? "Carregando marcas..." : ""}
+        {brandLoading ? "Carregando marcas..." : ""}
       </option>
-      {brandList.map((brand) => (
+      {brandList.map((brand: VehicleBrand) => (
         <option key={brand.codigo} value={brand.codigo}>
           {brand.nome}
         </option>

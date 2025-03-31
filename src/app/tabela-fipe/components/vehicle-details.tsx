@@ -1,6 +1,6 @@
 "use client"
 
-import type { VehicleDetailsModel } from "@/features/tabela-fipe/vehicle-details-slice"
+import type { VehicleDetailsModel } from "@/store/slices/vehicle-details/slice"
 import { Card, CardContent, Typography, Box } from "@mui/material"
 
 interface VehicleDetailsProps {

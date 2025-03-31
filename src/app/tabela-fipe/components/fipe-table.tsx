@@ -2,27 +2,23 @@
 import { useEffect, useState } from "react"
 import { Box, Container, Typography, Alert } from "@mui/material"
 
-import { fetchModels } from "@/features/tabela-fipe/vehicle-model-slice"
-
-import { fetchPrice } from "@/features/tabela-fipe/vehicle-details-slice"
 import { BrandSelect } from "./vehicle-brand-select"
 import { ConsultButton } from "./consult-button"
 import { ModelSelect } from "./vehicle-model-select"
 
 import { YearSelect } from "./model-vehicle-year-select"
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "@/features/tabela-fipe/hooks/hooks"
+
 import { VehicleDetails } from "./vehicle-details"
-import { fetchBrands } from "@/features/tabela-fipe/vehicle-brand-slice"
-import { fetchYears } from "@/features/tabela-fipe/vehicle-model-years-slice"
+import { fetchBrands } from "@/store/slices/vehicle-brand/slice"
+import { fetchModels } from "@/store/slices/vehicle-model/slice"
+import { fetchYears } from "@/store/slices/vehicle-model-years/slice"
+import { fetchPrice } from "@/store/slices/vehicle-details/slice"
+import { useAppDispatch, useAppSelector } from "@/store/hooks"
 
 export const FipeTable = () => {
   const dispatch = useAppDispatch()
-  const { brandError, brandLoading } = useAppSelector((state) => state.brands)
+  const { brandError } = useAppSelector((state) => state.brands)
   const { modelLoading } = useAppSelector((state) => state.models)
-  const { yearLoading } = useAppSelector((state) => state.years)
   const { vehicleDetails } = useAppSelector((state) => state.vehicleDetail)
 
   const [selectedBrand, setSelectedBrand] = useState("")
@@ -116,7 +112,6 @@ export const FipeTable = () => {
         <BrandSelect
           value={selectedBrand}
           onChange={setSelectedBrand}
-          loading={brandLoading}
           initialLoad={isInitialLoadBrand}
         />
 
@@ -131,7 +126,6 @@ export const FipeTable = () => {
         <YearSelect
           value={selectedYear}
           onChange={setSelectedYear}
-          loading={yearLoading}
           initialLoad={isInitialLoadYear}
           disabled={!selectedModel}
         />

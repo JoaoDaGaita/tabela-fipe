@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit"
-import vehicleBrandReducer from "@/features/tabela-fipe/vehicle-brand-slice"
-import vehicleModelReducer from "@/features/tabela-fipe/vehicle-model-slice"
-import modelVehicleYearReducer from "@/features/tabela-fipe/vehicle-model-years-slice"
-import vehicleDetailReducer from "@/features/tabela-fipe/vehicle-details-slice"
+import vehicleBrandReducer from "@/store/slices/vehicle-brand/slice"
+import vehicleModelReducer from "@/store/slices/vehicle-model/slice"
+import modelVehicleYearReducer from "@/store/slices/vehicle-model-years/slice"
+import vehicleDetailReducer from "@/store/slices/vehicle-details/slice"
 
 export const store = configureStore({
   reducer: {

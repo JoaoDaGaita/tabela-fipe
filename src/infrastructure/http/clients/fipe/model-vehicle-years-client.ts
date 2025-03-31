@@ -19,7 +19,6 @@ export class FipeModelVehicleYearsClient extends HttpClient {
     const response = await this.instance.get<ModelYearVariant[]>(
       `/marcas/${brandCode}/modelos/${modelCode}/anos`
     )
-    console.log(response.data)
 
     return response.data
   }

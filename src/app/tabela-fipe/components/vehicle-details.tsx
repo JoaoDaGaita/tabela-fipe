@@ -1,12 +1,13 @@
 "use client"
-import { Card, CardContent, Typography, Box } from "@mui/material"
-import { VehiclePrice } from "@/lib/tabela-fipe/vehicle-slice"
 
-interface PriceResultProps {
-  price: VehiclePrice
+import type { VehicleDetailsModel } from "@/features/tabela-fipe/vehicle-details-slice"
+import { Card, CardContent, Typography, Box } from "@mui/material"
+
+interface VehicleDetailsProps {
+  vehicleDetails: VehicleDetailsModel
 }
 
-export const PriceResult = ({ price }: PriceResultProps) => {
+export const VehicleDetails = ({ vehicleDetails }: VehicleDetailsProps) => {
   return (
     <Card
       sx={{
@@ -27,7 +28,7 @@ export const PriceResult = ({ price }: PriceResultProps) => {
             marginBottom: 1,
           }}
         >
-          Tabela Fipe: Preço {price.Modelo} {price.AnoModelo}
+          Tabela Fipe: Preço {vehicleDetails.Modelo} {vehicleDetails.AnoModelo}
         </Typography>
 
         <Box
@@ -46,7 +47,7 @@ export const PriceResult = ({ price }: PriceResultProps) => {
               color: "#1976d2",
             }}
           >
-            R$ {price.Valor}
+            R$ {vehicleDetails.Valor}
           </Typography>
         </Box>
 

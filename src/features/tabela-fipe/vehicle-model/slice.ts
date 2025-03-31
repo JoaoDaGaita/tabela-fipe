@@ -1,19 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
+import { FipeVehicleModelClient } from "@/infrastructure/http/clients/fipe/vehicle-model-client"
+import type { VehicleModel } from "@/types/fipe.types"
 
-interface Model {
-  codigo: number
-  nome: string
-}
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 interface ModelState {
-  modelList: Model[]
+  modelList: VehicleModel
   modelLoading: boolean
   modelError: string | null
 }
 
 const initialState: ModelState = {
-  modelList: [],
+  modelList: { modelos: [] },
   modelLoading: false,
   modelError: null,
 }
@@ -22,11 +19,8 @@ export const fetchModels = createAsyncThunk(
   "models/fetchModels",
   async (brandCode: string, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        `https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandCode}/modelos`
-      )
-
-      return response.data.modelos
+      const vehicleModelClient = await new FipeVehicleModelClient()
+      return await vehicleModelClient.getAll(brandCode)
     } catch (modelError) {
       console.error("Erro ao buscar modelos:", modelError)
       return rejectWithValue("Aconteceu um erro inesperado.")
@@ -51,7 +45,7 @@ const modelSlice = createSlice({
       .addCase(fetchModels.rejected, (state, action) => {
         state.modelLoading = false
         state.modelError = action.error.message || "Falha ao carregar modelos"
-        state.modelList = []
+        state.modelList = { modelos: [] }
       })
   },
 })

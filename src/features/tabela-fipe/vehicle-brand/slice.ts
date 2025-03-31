@@ -1,5 +1,5 @@
+import { FipeVehicleBrandClient } from "@/infrastructure/http/clients/fipe/vehicle-brand-client"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
 
 interface Brand {
   codigo: string
@@ -18,17 +18,18 @@ const initialState: BrandState = {
   brandError: null,
 }
 
-export const fetchBrands = createAsyncThunk("brands/fetchBrands", async () => {
-  try {
-    const response = await axios.get(
-      "https://parallelum.com.br/fipe/api/v1/carros/marcas"
-    )
-    return response.data
-  } catch (error) {
-    console.error("Erro ao buscar marcas:", error)
-    throw error
+export const fetchBrands = createAsyncThunk(
+  "brands/fetchBrands",
+  async (_, { rejectWithValue }) => {
+    try {
+      const vehicleBrandClient = new FipeVehicleBrandClient()
+      return vehicleBrandClient.getAll()
+    } catch (error) {
+      console.error("Erro ao buscar marcas:", error)
+      return rejectWithValue("Aconteceu um erro inesperado.")
+    }
   }
-})
+)
 
 const brandSlice = createSlice({
   name: "brands",

@@ -1,5 +1,5 @@
+import { FipeModelVehicleYearsClient } from "@/infrastructure/http/clients/fipe/model-vehicle-years-client"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
 
 interface Year {
   codigo: number
@@ -27,11 +27,8 @@ export const fetchYears = createAsyncThunk(
   "years/fetchYears",
   async (params: YearParams, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        `https://parallelum.com.br/fipe/api/v1/carros/marcas/${params.brandCode}/modelos/${params.modelCode}/anos`
-      )
-
-      return response.data
+      const vehicleModelClient = await new FipeModelVehicleYearsClient()
+      return await vehicleModelClient.getAll(params.brandCode, params.modelCode)
     } catch (modelError) {
       console.error("Erro ao buscar anos:", modelError)
       return rejectWithValue("Aconteceu um erro inesperado.")

@@ -1,5 +1,5 @@
+import { FipeVehicleDetailsClient } from "@/infrastructure/http/clients/fipe/vehicle-details-client"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
 
 interface PriceParams {
   brandCode: string
@@ -7,7 +7,7 @@ interface PriceParams {
   yearCode: string
 }
 
-export interface VehiclePrice {
+export interface VehicleDetailsModel {
   TipoVeiculo: number
   Valor: string
   Marca: string
@@ -19,29 +19,26 @@ export interface VehiclePrice {
 }
 
 interface PriceState {
-  price: VehiclePrice
+  vehicleDetails: VehicleDetailsModel
   priceLoading: boolean
   priceError: string | null
 }
 
 const initialState: PriceState = {
-  price: {} as VehiclePrice,
+  vehicleDetails: {} as VehicleDetailsModel,
   priceLoading: false,
   priceError: null,
 }
 
 export const fetchPrice = createAsyncThunk(
-  "price/fetchPrice",
+  "vehicleDetails/fetchPrice",
   async (
     { brandCode, modelCode, yearCode }: PriceParams,
     { rejectWithValue }
   ) => {
     try {
-      const response = await axios.get(
-        `https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandCode}/modelos/${modelCode}/anos/${yearCode}`
-      )
-
-      return response.data
+      const vehicleDetails = new FipeVehicleDetailsClient()
+      return vehicleDetails.getAll(brandCode, modelCode, yearCode)
     } catch (priceError) {
       console.error("Erro ao buscar preço:", priceError)
       return rejectWithValue("Aconteceu um erro inesperado.")
@@ -49,8 +46,8 @@ export const fetchPrice = createAsyncThunk(
   }
 )
 
-const priceSlice = createSlice({
-  name: "price",
+const vehicleDetailsSlice = createSlice({
+  name: "vehicleDetails",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -61,14 +58,15 @@ const priceSlice = createSlice({
       })
       .addCase(fetchPrice.fulfilled, (state, action) => {
         state.priceLoading = false
-        state.price = action.payload || {}
+        //state.price = action.payload
+        state.vehicleDetails = action.payload
       })
       .addCase(fetchPrice.rejected, (state, action) => {
         state.priceLoading = false
         state.priceError = action.error.message || "Falha ao carregar priceos"
-        state.price = {} as VehiclePrice
+        state.vehicleDetails = {} as VehicleDetailsModel
       })
   },
 })
 
-export default priceSlice.reducer
+export default vehicleDetailsSlice.reducer

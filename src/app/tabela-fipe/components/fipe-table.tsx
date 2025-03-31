@@ -2,23 +2,28 @@
 import { useEffect, useState } from "react"
 import { Box, Container, Typography, Alert } from "@mui/material"
 
-import { fetchBrands } from "@/lib/tabela-fipe/brand-slice"
-import { fetchModels } from "@/lib/tabela-fipe/model-slice"
-import { fetchYears } from "@/lib/tabela-fipe/year-slice"
-import { fetchPrice } from "@/lib/tabela-fipe/vehicle-slice"
-import { BrandSelect } from "./brand-select"
+import { fetchModels } from "@/features/tabela-fipe/vehicle-model-slice"
+
+import { fetchPrice } from "@/features/tabela-fipe/vehicle-details-slice"
+import { BrandSelect } from "./vehicle-brand-select"
 import { ConsultButton } from "./consult-button"
-import { ModelSelect } from "./model-select"
-import { PriceResult } from "./price-result"
-import { YearSelect } from "./year-select"
-import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks"
+import { ModelSelect } from "./vehicle-model-select"
+
+import { YearSelect } from "./model-vehicle-year-select"
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "@/features/tabela-fipe/hooks/hooks"
+import { VehicleDetails } from "./vehicle-details"
+import { fetchBrands } from "@/features/tabela-fipe/vehicle-brand-slice"
+import { fetchYears } from "@/features/tabela-fipe/vehicle-model-years-slice"
 
 export const FipeTable = () => {
   const dispatch = useAppDispatch()
   const { brandError, brandLoading } = useAppSelector((state) => state.brands)
-  const { modelLoading, modelList } = useAppSelector((state) => state.models)
-  const { yearLoading, yearList } = useAppSelector((state) => state.years)
-  const { price } = useAppSelector((state) => state.price)
+  const { modelLoading } = useAppSelector((state) => state.models)
+  const { yearLoading } = useAppSelector((state) => state.years)
+  const { vehicleDetails } = useAppSelector((state) => state.vehicleDetail)
 
   const [selectedBrand, setSelectedBrand] = useState("")
   const [selectedModel, setSelectedModel] = useState("")
@@ -133,7 +138,9 @@ export const FipeTable = () => {
 
         <ConsultButton disabled={!selectedYear} onClick={checkVehiclePrice} />
 
-        {price && showVehiclePrice && <PriceResult price={price} />}
+        {vehicleDetails && showVehiclePrice && (
+          <VehicleDetails vehicleDetails={vehicleDetails} />
+        )}
       </Box>
     </Container>
   )

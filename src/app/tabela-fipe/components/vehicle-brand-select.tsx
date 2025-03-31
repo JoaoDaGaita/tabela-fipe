@@ -1,5 +1,5 @@
 "use client"
-import { useAppSelector } from "@/lib/hooks/hooks"
+import { useAppSelector } from "@/features/tabela-fipe/hooks/hooks"
 import { TextField, CircularProgress, InputAdornment } from "@mui/material"
 
 interface BrandSelectProps {
@@ -15,7 +15,7 @@ export const BrandSelect = ({
   loading,
   initialLoad,
 }: BrandSelectProps) => {
-  const { brandList = [] } = useAppSelector((state) => state.brands)
+  const { brandList } = useAppSelector((state) => state.brands)
 
   return (
     <TextField

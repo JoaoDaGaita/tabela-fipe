@@ -1,8 +1,8 @@
 "use client"
-import { useAppSelector } from "@/lib/hooks/hooks"
+import { useAppSelector } from "@/features/tabela-fipe/hooks/hooks"
 import { TextField, CircularProgress, InputAdornment } from "@mui/material"
 
-interface ModelSelectProps {
+interface YearSelectProps {
   value: string
   onChange: (value: string) => void
   loading: boolean
@@ -10,24 +10,24 @@ interface ModelSelectProps {
   disabled: boolean
 }
 
-export const ModelSelect = ({
+export const YearSelect = ({
   value,
   onChange,
   loading,
   initialLoad,
   disabled,
-}: ModelSelectProps) => {
-  const { modelList } = useAppSelector((state) => state.models)
+}: YearSelectProps) => {
+  const { yearList } = useAppSelector((state) => state.years)
 
   return (
     <TextField
       select
-      label="Modelo"
+      label="Ano"
       variant="outlined"
-      sx={{ mb: 3 }}
+      value={value}
+      sx={{ mb: 6 }}
       onChange={(e) => onChange(e.target.value)}
       fullWidth
-      value={value}
       disabled={disabled || loading}
       slotProps={{
         select: {
@@ -47,9 +47,10 @@ export const ModelSelect = ({
       }}
     >
       <option value="">{loading ? "" : disabled ? "" : ""}</option>
-      {modelList?.map((model) => (
-        <option key={model.codigo} value={model.codigo}>
-          {model.nome}
+      {/* arrumar caso não haja um ano valido */}
+      {yearList?.map((year) => (
+        <option key={year.codigo} value={year.codigo}>
+          {year.nome}
         </option>
       ))}
     </TextField>

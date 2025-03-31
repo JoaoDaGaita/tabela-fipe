@@ -20,5 +20,6 @@ Este repositório contém minha solução para o teste técnico de frontend, que
 
 Vercel
 📋 Solução dos Exercícios
-Os Exercicios 1, 2 e 4 estão fixos no console, já o exercício 3 está na home page. E por fim o exercício da tabela fipe esta no endereço
+Os Exercicios 1, 2 e 4 estão fixos no console, já o exercício 3 está na home page [Link Exercícios](https://tabela-fipe-delta.vercel.app/). 
+E por fim o exercício da tabela fipe esta no endereço
 [TABELA FIPE](https://tabela-fipe-delta.vercel.app/tabela-fipe)

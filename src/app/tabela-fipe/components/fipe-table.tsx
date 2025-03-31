@@ -1,16 +1,17 @@
 "use client"
 import { useEffect, useState } from "react"
 import { Box, Container, Typography, Alert } from "@mui/material"
-import { useAppDispatch, useAppSelector } from "@/hooks/hooks"
-import { fetchBrands } from "@/store/brand-slice"
-import { fetchModels } from "@/store/model-slice"
-import { fetchYears } from "@/store/year-slice"
-import { fetchPrice } from "@/store/vehicle-slice"
+
+import { fetchBrands } from "@/lib/tabela-fipe/brand-slice"
+import { fetchModels } from "@/lib/tabela-fipe/model-slice"
+import { fetchYears } from "@/lib/tabela-fipe/year-slice"
+import { fetchPrice } from "@/lib/tabela-fipe/vehicle-slice"
 import { BrandSelect } from "./brand-select"
 import { ConsultButton } from "./consult-button"
 import { ModelSelect } from "./model-select"
 import { PriceResult } from "./price-result"
 import { YearSelect } from "./year-select"
+import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks"
 
 export const FipeTable = () => {
   const dispatch = useAppDispatch()
@@ -96,14 +97,14 @@ export const FipeTable = () => {
         Tabela Fipe
       </Typography>
 
-      <Typography variant="subtitle1" sx={{ mb: 4 }}>
+      <Typography variant="subtitle1" sx={{ mb: 2 }}>
         Consulte o valor de um veículo de forma gratuita
       </Typography>
 
       <Box
         sx={{
           backgroundColor: "white",
-          padding: "50px",
+          padding: "30px",
           borderRadius: "8px",
         }}
       >

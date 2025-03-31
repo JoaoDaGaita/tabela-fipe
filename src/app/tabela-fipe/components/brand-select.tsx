@@ -1,6 +1,6 @@
 "use client"
-import { TextField, CircularProgress } from "@mui/material"
-import { useAppSelector } from "@/hooks/hooks"
+import { useAppSelector } from "@/lib/hooks/hooks"
+import { TextField, CircularProgress, InputAdornment } from "@mui/material"
 
 interface BrandSelectProps {
   value: string
@@ -27,17 +27,21 @@ export const BrandSelect = ({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       disabled={loading}
-      SelectProps={{
-        native: true,
-        displayEmpty: true,
-      }}
-      InputLabelProps={{
-        shrink: initialLoad ? false : undefined,
-      }}
-      InputProps={{
-        startAdornment: loading && (
-          <CircularProgress size={20} sx={{ mr: 1 }} />
-        ),
+      slotProps={{
+        select: {
+          native: true,
+          displayEmpty: true,
+        },
+        inputLabel: {
+          shrink: initialLoad ? false : undefined,
+        },
+        input: {
+          startAdornment: loading && (
+            <InputAdornment position="start">
+              <CircularProgress size={20} sx={{ mr: 1 }} />
+            </InputAdornment>
+          ),
+        },
       }}
     >
       <option value="" disabled hidden>

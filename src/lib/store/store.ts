@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit"
-import brandReducer from "./brand-slice"
-import modelReducer from "./model-slice"
-import yearReducer from "./year-slice"
-import priceReducer from "./vehicle-slice"
+import brandReducer from "../tabela-fipe/brand-slice"
+import modelReducer from "../tabela-fipe/model-slice"
+import yearReducer from "../tabela-fipe/year-slice"
+import priceReducer from "../tabela-fipe/vehicle-slice"
 
 export const store = configureStore({
   reducer: {

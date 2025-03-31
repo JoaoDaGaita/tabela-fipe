@@ -13,10 +13,10 @@ export const ConsultButton = ({ disabled, onClick }: ConsultButtonProps) => {
       sx={{
         backgroundColor: "blue",
         color: "white",
-        padding: "20px",
-        mb: 5,
+        padding: "10px",
+        mb: 2,
         "&:hover": {
-          backgroundColor: "#6a1b9a",
+          backgroundColor: "blue",
         },
       }}
       disabled={disabled}

@@ -1,6 +1,6 @@
 "use client"
 import { Card, CardContent, Typography, Box } from "@mui/material"
-import { VehiclePrice } from "@/store/vehicle-slice"
+import { VehiclePrice } from "@/lib/tabela-fipe/vehicle-slice"
 
 interface PriceResultProps {
   price: VehiclePrice

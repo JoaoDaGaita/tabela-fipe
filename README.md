@@ -4,7 +4,7 @@
 Este repositório contém minha solução para o teste técnico de frontend, que inclui exercícios de programação e um projeto de consulta de preços de veículos utilizando a tabela FIPE brasileira.
 🛠️ Tecnologias Utilizadas
 
-    Framework: React.js
+    Framework: NEXT/React.js
 
     Gerenciamento de Estado: Redux Toolkit
 

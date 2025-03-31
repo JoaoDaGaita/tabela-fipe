@@ -16,12 +16,18 @@ export default function Home() {
     console.log("EXERCÍCIO 1")
     console.log("-----------------------------------------------------------")
 
-    console.log('"4556364607935616" →', maskify("4556364607935616"))
-    console.log('"64607935616" →', maskify("64607935616"))
-    console.log('"1" →', maskify("1"))
-    console.log('"" →', maskify(""))
     console.log(
-      '"Nanananananananananana Batman!" →',
+      '"4556364607935616" Execução do método maskify: →',
+      maskify("4556364607935616")
+    )
+    console.log(
+      '"64607935616" Execução do método maskify: →',
+      maskify("64607935616")
+    )
+    console.log('"1" Execução do método maskify: →', maskify("1"))
+    console.log('"" Execução do método maskify: →', maskify(""))
+    console.log(
+      '"Nanananananananananana Batman!" Execução do método maskify: →',
       maskify("Nanananananananananana Batman!")
     )
     console.log("-----------------------------------------------------------")
@@ -59,11 +65,26 @@ export default function Home() {
     console.log("EXERCÍCIO 4")
     console.log("-----------------------------------------------------------")
 
-    console.log(checkIfTheFirstLetterIsUppercase("Brasil"))
-    console.log(checkIfTheFirstLetterIsUppercase("mobiauto"))
-    console.log(checkIfTheFirstLetterIsUppercase("xXx xXx"))
-    console.log(checkIfTheFirstLetterIsUppercase("xDD"))
-    console.log(checkIfTheFirstLetterIsUppercase("Deu Certo!"))
+    console.log(
+      "Checando se o input 'Brasil' começa com letra maiúscula",
+      checkIfTheFirstLetterIsUppercase("Brasil")
+    )
+    console.log(
+      "Checando se o input 'mobiauto' começa com letra maiúscula",
+      checkIfTheFirstLetterIsUppercase("mobiauto")
+    )
+    console.log(
+      "Checando se o input 'xXx xXx' começa com letra maiúscula",
+      checkIfTheFirstLetterIsUppercase("xXx xXx")
+    )
+    console.log(
+      "Checando se o input 'xDD' começa com letra maiúscula",
+      checkIfTheFirstLetterIsUppercase("xDD")
+    )
+    console.log(
+      "Checando se o input 'Deu Certo!' começa com letra maiúscula",
+      checkIfTheFirstLetterIsUppercase("Deu Certo!")
+    )
     console.log("--------------------------------------------")
   }, [])
 
